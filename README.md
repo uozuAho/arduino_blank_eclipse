@@ -77,9 +77,9 @@ library to this project. The compiled core library can be obtained by doing the 
 
 NOTES
 =====
-    - Eclipse might give you errors regarding implementation of abstract classes - just turn these
-    errors off (go to problems view, right click on the error & turn it off or make it a warning 
-    instead). Eclipse is wrong...probably because it can't see inside the arduino core library.
+- Eclipse might give you errors regarding implementation of abstract classes - just turn these
+errors off (go to problems view, right click on the error & turn it off or make it a warning 
+instead). Eclipse is wrong...probably because it can't see inside the arduino core library.
     
     
 TODO
@@ -90,3 +90,4 @@ TODO
 - Add pre-built libraries & pin headers for all Arduino hardware
 - Make a generic "pins_arduino.h" file which includes the correct header file based on 
 the Eclipse build configuration
+- Add LICENSE and .gitignore files
