@@ -1,5 +1,5 @@
-arduino_blank
-=============
+arduino_blank_eclipse
+=====================
 
 This is a (nearly) blank Eclipse project to be used as a base for building more complex
 Arduino programs. Currently only the Arduino Uno is supported.
@@ -10,31 +10,33 @@ setup() then continuously calls loop(). These two functions must be defined by y
 files etc. just as you would a regular c project.
 
 You'll need:
+
  - Eclipse CDT (http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/junosr2)
- 
+
  - Eclipse AVR plugin. Get from Eclipse marketplace or here:
-    --http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_Eclipse_Plugin
+  - http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_Eclipse_Plugin
  
- - AVR-gcc toolchain. This comes with the Arduino IDE, or can be found separately...here?:
-   http://winavr.sourceforge.net/. Make sure the binary path is in your system path, either
-   in the global PATH variable of your system or the PATH variable set within Eclipse.
-   In my case, I added C:\arduino-1.0.4\hardware\tools\avr\bin to Windows' PATH variable.
+ - AVR-gcc toolchain. This comes with the Arduino IDE (http://arduino.cc/en/Main/Software), 
+   or can be found separately...here?: http://winavr.sourceforge.net/. Make sure the binary 
+   path is in your system path, either in the global PATH variable of your system or the PATH 
+   variable set within Eclipse. In my case, I added C:\arduino-1.0.4\hardware\tools\avr\bin 
+   to Windows' PATH variable.
    
- - MinGW (?) http://www.mingw.org/ for make (if you're using Windows).
+ - MinGW  http://www.mingw.org/ for make (if you're using Windows).
 
 Uploading to target hardware
 ============================
 
 This project has an avrdude configuration, however I think it relies on local paths so you
 may not be able to program your arduino straight away. If this is the case, do the following
-(assumes you've got the Arduino IDE installed):
+(assumes you've got the Arduino IDE installed in C:\arduino-1.0.4):
 
 - In Eclipse, go to Window->Preferences->AVR->Paths
 - Assuming your Arduino installation is in C:\arduino-1.0.4\, set the following:
--- AVR-GCC: Source: custom, Current value: C:\arduino-1.0.4\hardware\tools\avr\bin
--- GNU make: (if using Windows) Source: custom, Current value: C:\MinGW\bin
--- AVR Header files: Source: custom, Current value: C:\arduino-1.0.4\hardware\tools\avr\avr\include
--- AVRDude: Source: custom, Current value: C:\arduino-1.0.4\hardware\tools\avr\bin
+ - AVR-GCC: Source: custom, Current value: C:\arduino-1.0.4\hardware\tools\avr\bin
+ - GNU make: (if using Windows) Source: custom, Current value: C:\MinGW\bin
+ - AVR Header files: Source: custom, Current value: C:\arduino-1.0.4\hardware\tools\avr\avr\include
+ - AVRDude: Source: custom, Current value: C:\arduino-1.0.4\hardware\tools\avr\bin
 
 - Now in Eclipse, go to Window->Preferences->AVRDude, enable 
   "Use custom configuration file for AVRDude" and set it to 
