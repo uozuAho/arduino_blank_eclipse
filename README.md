@@ -11,25 +11,26 @@ files etc. just as you would a regular c project.
 
 You'll need:
 
- - Eclipse CDT (http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/junosr2)
+- Eclipse CDT (http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/junosr2)
 
- - Eclipse AVR plugin. Get from Eclipse marketplace or here:
-  - http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_Eclipse_Plugin
+- Eclipse AVR plugin. Get from Eclipse marketplace or here:
  
- - AVR-gcc toolchain. This comes with the Arduino IDE (http://arduino.cc/en/Main/Software), 
-   or can be found separately...here?: http://winavr.sourceforge.net/. Make sure the binary 
-   path is in your system path, either in the global PATH variable of your system or the PATH 
-   variable set within Eclipse. In my case, I added C:\arduino-1.0.4\hardware\tools\avr\bin 
-   to Windows' PATH variable.
+    - http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_Eclipse_Plugin
+ 
+- AVR-gcc toolchain. This comes with the Arduino IDE (http://arduino.cc/en/Main/Software), 
+  or can be found separately...here?: http://winavr.sourceforge.net/. Make sure the binary 
+  path is in your system path, either in the global PATH variable of your system or the PATH 
+  variable set within Eclipse. In my case, I added C:\arduino-1.0.4\hardware\tools\avr\bin 
+  to Windows' PATH variable.
    
- - MinGW  http://www.mingw.org/ for make (if you're using Windows).
+- MinGW  http://www.mingw.org/ for make (if you're using Windows).
 
 Uploading to target hardware
 ============================
 
-This project has an avrdude configuration, however I think it relies on local paths so you
-may not be able to program your arduino straight away. If this is the case, do the following
-(assumes you've got the Arduino IDE installed in C:\arduino-1.0.4):
+It seems as though AVRdude programmer configurations in Eclipse aren't portable, so 
+you'll have to create your own if you haven't already. Here's how (assumes you've got the Arduino 
+IDE installed in C:\arduino-1.0.4):
 
 - In Eclipse, go to Window->Preferences->AVR->Paths
 - Assuming your Arduino installation is in C:\arduino-1.0.4\, set the following:
@@ -48,8 +49,14 @@ may not be able to program your arduino straight away. If this is the case, do t
 - Select the serial port that your arduino is connected to, eg. com8 (Windows) or 
   /dev/ttyACM0 (Linux). This may change if you restart/reconnect your arduino.
 - Override the baud rate to 115200
-- Click OK
-- You should now be able to upload your binary to your Arduino!
+- Click OK, Apply, OK. All windows apart from Eclipse's main window should be closed now.
+- Now go to Project->Properties->AVR->AVRdude and select the configuration you created
+  above for "Programmer Configuration"
+- Go to Project->Properties->AVR->Target Hardware and select the correct MCU and 
+  MCU clock. For the Arduino Uno this is Atmega328p & 16000000
+- You should now be able to upload your binary to your Arduino by pressing the "Upload
+  current project to Atmel target MCU" button (Icon on Eclipse toolbar with "AVR" and a 
+  green arrow pointing downwards).
 
 
 
@@ -87,8 +94,6 @@ instead). Eclipse is wrong...probably because it can't see inside the arduino co
 TODO
 ====
 
-- I think the Eclipse project file is broken - I keep getting a Java null pointer exception
-  after each build. Luckily the thing still builds.
 - Add pre-built libraries & pin headers for all Arduino hardware
 - Make a generic "pins_arduino.h" file which includes the correct header file based on 
 the Eclipse build configuration
